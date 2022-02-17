@@ -17,7 +17,7 @@ public class SpringPlayer : MonoBehaviour
         jump = new Vector3(0.0f, 1.0f, 0.0f);
     }
 
-    void OnCollisionStay()
+    void OnCollisionEnter()
     {
         isGrounded = true;
     }
