@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class WalkRunPlayer : MonoBehaviour
 {
+    [Header("Movement aanpassingen")]
+    [SerializeField] float speed = 10f;
+    [SerializeField] float playerSens = 700f;
+
+
     float horizontal;
     float vertical;
-    public float speed = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Walk();
+        Run();
+    }
+
+    void Walk()
+    {
+        //Move Player
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
         transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime);
         transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime);
 
-        Run();
+        //Move player with camera
+        float mouseX = Input.GetAxis("Mouse X");
+        transform.Rotate(0, mouseX * playerSens * Time.deltaTime, 0);
     }
 
     void Run()
@@ -37,4 +51,5 @@ public class WalkRunPlayer : MonoBehaviour
             speed = 10f;
         }
     }
+
 }
