@@ -5,21 +5,20 @@ using UnityEngine;
 public class WalkRunPlayer : MonoBehaviour
 {
     [Header("Movement aanpassingen")]
-    [SerializeField] float speed = 10f;
-    [SerializeField] float playerSens = 700f;
-
+    [SerializeField] [Tooltip("With this you can change the players walk speed")] float walkSpeed = 10f;
+    [SerializeField] [Tooltip("With this you can change the players run speed")] float runSpeed = 15f;
+    [Header("Camera aanpassingen")]
+    [SerializeField] [Tooltip("With this you can change the camera sensitivity")] float cameraSen = 700f;
 
     float horizontal;
     float vertical;
 
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Walk();
@@ -32,23 +31,26 @@ public class WalkRunPlayer : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.forward * vertical * speed * Time.deltaTime);
-        transform.Translate(Vector3.right * horizontal * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * vertical * walkSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * horizontal * walkSpeed * Time.deltaTime);
 
         //Move player with camera
         float mouseX = Input.GetAxis("Mouse X");
-        transform.Rotate(0, mouseX * playerSens * Time.deltaTime, 0);
+        transform.Rotate(0, mouseX * cameraSen * Time.deltaTime, 0);
+
+
     }
 
     void Run()
     {
+        //Move player faster while you run
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 20f;
+            walkSpeed = runSpeed;
         }
         else
         {
-            speed = 10f;
+            walkSpeed = 10f;
         }
     }
 
