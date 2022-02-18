@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Guns : MonoBehaviour
 {
-    [SerializeField] float damage = 10f;
-    [SerializeField] float range = 100f;
+    [SerializeField] Rigidbody BulletPrefab;
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] float bulletVelocity = 200f;
 
     public GameObject mainCam;
-    public GameObject ShootCam;
     public GameObject cinaMain;
     public GameObject cinaShoot;
 
@@ -21,26 +21,21 @@ public class Guns : MonoBehaviour
 
         if (Input.GetButton("Fire2"))
         {
-            ShootCam.SetActive(true);
             cinaShoot.SetActive(true);
             cinaMain.SetActive(false);
-            mainCam.SetActive(false);
         }
         else
         {
-            mainCam.SetActive(true);
             cinaMain.SetActive(true);
-            ShootCam.SetActive(false);
             cinaShoot.SetActive(false);
         }
     }
 
     void Shoot()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(ShootCam.transform.position, ShootCam.transform.forward, out hit, range))
-        {
-            Debug.Log(hit.transform.name);
-        }
+        Rigidbody clone;
+        clone = (Rigidbody)Instantiate(BulletPrefab, spawnPoint.position, BulletPrefab.rotation);
+
+        clone.velocity = spawnPoint.TransformDirection(Vector3.down * bulletVelocity);
     }
 }
