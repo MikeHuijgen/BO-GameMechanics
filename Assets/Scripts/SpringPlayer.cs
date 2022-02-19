@@ -12,7 +12,9 @@ public class SpringPlayer : MonoBehaviour
     Rigidbody rb;
 
     [Header("smokeJump")]
-    [SerializeField] GameObject particalSmoke;
+    [SerializeField] ParticleSystem LandDust;
+    [SerializeField] ParticleSystem jumpWalkRunDust; 
+
 
     void Start()
     {
@@ -23,21 +25,26 @@ public class SpringPlayer : MonoBehaviour
     void OnCollisionEnter()
     {
         isGrounded = true;
+        LandSmoke();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            Smoke(); 
             isGrounded = false;
-        }
+            jumpWalkRunDust.Play();
+        }   
     }
 
-    void Smoke()
+    void LandSmoke()
     {
-        
+        LandDust.Play();
+    }
+
+    void jumpSmoke()
+    {
+        jumpWalkRunDust.Play();
     }
 }
