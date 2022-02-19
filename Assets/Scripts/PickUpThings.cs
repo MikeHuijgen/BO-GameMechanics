@@ -5,33 +5,30 @@ using UnityEngine;
 public class PickUpThings : MonoBehaviour
 {
     [SerializeField] Transform Equip;
-    [SerializeField] float distance = 5f;
+    
+    GameObject currentObject;
+    GameObject cO;
 
-    GameObject currentWeapon;
-    GameObject wp;
+    bool CanGrab;
 
-    bool CanGrab; 
-
-    // Update is called once per frame
     void Update()
     {
         weapons();
-
         if (CanGrab)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (currentWeapon != null)
+                if (currentObject != null)
                     Drop();
-                    pick();
+                    Pick();
             }
         }
 
-        if (currentWeapon != null)
+        if (currentObject != null)
         {
             if (Input.GetKeyDown(KeyCode.Q))
                 Drop();
-        }
+        }       
     }
 
     void weapons()
@@ -42,19 +39,19 @@ public class PickUpThings : MonoBehaviour
         }
     }
 
-    void pick()
+    void Pick()
     {
-        currentWeapon = wp;
-        currentWeapon.transform.position = Equip.position;
-        currentWeapon.transform.parent = Equip;
-        currentWeapon.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
-        currentWeapon.GetComponent<Rigidbody>().isKinematic = true;
+        currentObject = cO;
+        currentObject.transform.position = Equip.position;
+        currentObject.transform.parent = Equip;
+        currentObject.transform.localEulerAngles = new Vector3(0f, 180.0f, 0f);
+        currentObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     void Drop()
     {
-        currentWeapon.transform.parent = null;
-        currentWeapon.GetComponent<Rigidbody>().isKinematic = false;
-        currentWeapon = null;
+        currentObject.transform.parent = null;
+        currentObject.GetComponent<Rigidbody>().isKinematic = false;
+        currentObject = null;
     }
 }
