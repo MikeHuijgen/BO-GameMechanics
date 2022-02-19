@@ -4,54 +4,68 @@ using UnityEngine;
 
 public class PickUpThings : MonoBehaviour
 {
-    [SerializeField] Transform Equip;
+    [Header("Objecten")]
+    [SerializeField] GameObject EquipObject;
     
     GameObject currentObject;
     GameObject cO;
 
-    bool CanGrab;
+    bool hasItem;
+    
+
+    private void Start()
+    {
+        
+        hasItem = false; 
+    }
+
 
     void Update()
     {
-        weapons();
-        if (CanGrab)
+        if (hasItem == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (currentObject != null)
                     Drop();
                     Pick();
+
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                if (currentObject != null)
+                    Drop();
             }
         }
-
-        if (currentObject != null)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-                Drop();
-        }       
-    }
-
-    void weapons()
-    {
-        if(transform.tag == "CanGrab")
-        {
-            CanGrab = true; 
-        }
+           
     }
 
     void Pick()
     {
         currentObject = cO;
-        currentObject.transform.position = Equip.position;
-        currentObject.transform.parent = Equip;
-        currentObject.transform.localEulerAngles = new Vector3(0f, 180.0f, 0f);
         currentObject.GetComponent<Rigidbody>().isKinematic = true;
+        currentObject.transform.position = EquipObject.transform.position;
+        currentObject.transform.parent = null;
+        currentObject.transform.localEulerAngles = new Vector3(0f, 180.0f, 0f);
     }
 
     void Drop()
     {
         currentObject.transform.parent = null;
         currentObject.GetComponent<Rigidbody>().isKinematic = false;
-        currentObject = null;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "hasItem")
+        {
+            hasItem = true;
+            currentObject = other.gameObject; 
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        hasItem = false; 
     }
 }
