@@ -5,11 +5,14 @@ using UnityEngine;
 public class SpringPlayer : MonoBehaviour
 {
 
+    [Header("Jump")]
     [SerializeField] float jumpForce = 0f;
-
-    private Vector3 jump;
     public bool isGrounded;
+    private Vector3 jump;
     Rigidbody rb;
+
+    [Header("smokeJump")]
+    [SerializeField] GameObject particalSmoke;
 
     void Start()
     {
@@ -28,7 +31,13 @@ public class SpringPlayer : MonoBehaviour
         {
 
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            Smoke(); 
             isGrounded = false;
         }
+    }
+
+    void Smoke()
+    {
+        
     }
 }
