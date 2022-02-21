@@ -5,7 +5,7 @@ using UnityEngine;
 public class WalkRunPlayer : MonoBehaviour
 {
     [Header("Movement aanpassingen")]
-    [SerializeField] [Tooltip("With this you can change the players walk speed")] float walkSpeed = 10f;
+    [SerializeField] [Tooltip("With this you can change the players walk speed")] public float walkSpeed = 10f;
     [SerializeField] [Tooltip("With this you can change the players run speed")] float runSpeed = 15f;
     [Header("Camera aanpassingen")]
     [SerializeField] [Tooltip("With this you can change the camera sensitivity")] float cameraSen = 700f;
@@ -15,8 +15,7 @@ public class WalkRunPlayer : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
     }
 
     void Update()
@@ -37,7 +36,6 @@ public class WalkRunPlayer : MonoBehaviour
         //Move player with camera
         float mouseX = Input.GetAxis("Mouse X");
         transform.Rotate(0, mouseX * cameraSen * Time.deltaTime, 0);
-
 
     }
 
