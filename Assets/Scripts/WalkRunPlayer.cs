@@ -34,8 +34,8 @@ public class WalkRunPlayer : MonoBehaviour
         transform.Translate(Vector3.right * horizontal * walkSpeed * Time.deltaTime);
 
         //Move player with camera
-        float mouseX = Input.GetAxis("Mouse X");
-        transform.Rotate(0, mouseX * cameraSen * Time.deltaTime, 0);
+        //float mouseX = Input.GetAxis("Mouse X");
+        //transform.Rotate(0, mouseX * cameraSen * Time.deltaTime, 0);
 
     }
 
