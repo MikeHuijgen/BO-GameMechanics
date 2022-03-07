@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovementMECH : MonoBehaviour
+public class cameraMovementPlayer : MonoBehaviour
 {
     [SerializeField] float cameraSenX;
     [SerializeField] float cameraSenY;
@@ -20,7 +20,7 @@ public class CameraMovementMECH : MonoBehaviour
     {
         //Get input
         float mouseX = Input.GetAxis("Mouse X");
-        float mouseY =- Input.GetAxis("Mouse Y");
+        float mouseY = -Input.GetAxis("Mouse Y");
 
         //Rotate the follow transform based on input
         followTransform.transform.rotation *= Quaternion.AngleAxis(mouseX * cameraSenX * Time.deltaTime, Vector3.up);
@@ -48,6 +48,7 @@ public class CameraMovementMECH : MonoBehaviour
         //Reste the y rotation of look transform
         followTransform.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
     }
+
     void GunRotation()
     {
         float mouseY = -Input.GetAxis("Mouse Y");

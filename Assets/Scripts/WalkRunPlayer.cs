@@ -13,11 +13,6 @@ public class WalkRunPlayer : MonoBehaviour
     float horizontal;
     float vertical;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         Walk();
