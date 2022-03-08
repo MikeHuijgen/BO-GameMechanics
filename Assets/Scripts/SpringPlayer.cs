@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SpringPlayer : MonoBehaviour
 {
+    Rigidbody rb;
 
     [Header("Jump")]
     [SerializeField] float jumpForce = 0f;
     public bool isGrounded;
     private Vector3 jump;
-    Rigidbody rb;
-
+    
     [Header("smokeJump")]
-    [SerializeField] GameObject particalSmoke;
+    [SerializeField] ParticleSystem landDust;
+    [SerializeField] ParticleSystem jumpWalkRunDust;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class SpringPlayer : MonoBehaviour
 
     void OnCollisionEnter()
     {
+        landSmoke();
         isGrounded = true;
     }
 
@@ -29,15 +31,19 @@ public class SpringPlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            Smoke(); 
-            isGrounded = false;
-        }
+            rb.AddForce (jump * jumpForce, ForceMode.Impulse);
+            jumpSmoke();
+            isGrounded = false; 
+        }   
     }
 
-    void Smoke()
+    void landSmoke()
     {
-        
+        landDust.Play();
+    }
+
+    void jumpSmoke()
+    {
+        jumpWalkRunDust.Play();
     }
 }
