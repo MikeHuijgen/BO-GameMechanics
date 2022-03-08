@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CanGrab
   - hasItem
+  - Booster
   layers:
   - Default
   - TransparentFX
