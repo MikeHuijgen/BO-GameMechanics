@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SpringPlayer : MonoBehaviour
 {
+    [Header("Jump")]
+    [SerializeField] float jumpSpeed = 1f;
+    [SerializeField] float distToGround = 1.3f;
     Rigidbody rb;
 
-    [Header("Jump")]
-    [SerializeField] float jumpForce = 0f;
-    public bool isGrounded;
-    private Vector3 jump;
-    
+    [Header("All BOOLS")]
+    public bool isJumped; 
+
     [Header("smokeJump")]
     [SerializeField] ParticleSystem landDust;
     [SerializeField] ParticleSystem jumpWalkRunDust;
@@ -18,32 +19,77 @@ public class SpringPlayer : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        jump = new Vector3(0.0f, 1.0f, 0.0f);
     }
 
-    void OnCollisionEnter()
+    void FixedUpdate()
     {
-        landSmoke();
-        isGrounded = true;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        CheckGround();
+        if (Input.GetKey(KeyCode.Space) && isJumped)
         {
-            rb.AddForce (jump * jumpForce, ForceMode.Impulse);
-            jumpSmoke();
-            isGrounded = false; 
-        }   
+            if (isJumped)
+            {
+                isJumped = false;
+                rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
+                JumpDust();
+            }
+        }
     }
 
-    void landSmoke()
+    private void CheckGround()
+    {
+        RaycastHit hit;
+
+        Ray landingRay = new Ray(transform.position, Vector3.down);
+        Debug.DrawRay(transform.position, Vector3.down * distToGround);
+
+        if (Physics.Raycast(landingRay, out hit, distToGround))
+        {
+            if (hit.collider == null)
+            {
+                isJumped = false;
+                Debug.Log(isJumped);
+            }
+            else
+            {
+                isJumped = true;
+                Debug.Log(isJumped);
+                
+            }
+        }
+    }
+
+    void LandDust()
     {
         landDust.Play();
     }
 
-    void jumpSmoke()
+    void JumpDust()
     {
         jumpWalkRunDust.Play();
     }
 }
+
+/*void FixedUpdate()
+   {
+       RaycastHit hit;
+
+       isGrounded = true;
+       Debug.Log(isGrounded);
+
+       if (Physics.Raycast(transform.position, -transform.up, out hit, 2)) 
+       {
+           if (Input.GetKey(KeyCode.Space) && isGrounded)
+           {
+               isGrounded = true;
+               rb.AddForce(Vector3.up * jumpForce);              
+               jumpSmoke();
+           }
+       }
+       else
+       {
+           landSmoke();
+           isGrounded = false;
+           Debug.Log(isGrounded);
+
+       }        
+   }*/

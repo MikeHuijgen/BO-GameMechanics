@@ -35,9 +35,5 @@ public class WalkRunPlayer : MonoBehaviour
         transform.Translate(Vector3.forward * vertical * walkSpeed * Time.deltaTime);
         transform.Translate(Vector3.right * horizontal * walkSpeed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-           // animator.SetBool("isWalking", true);
-        }
     }
 }
