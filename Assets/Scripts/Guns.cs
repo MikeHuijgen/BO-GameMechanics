@@ -7,7 +7,6 @@ public class Guns : MonoBehaviour
     [SerializeField] Rigidbody BulletPrefab;
     [SerializeField] Transform spawnPoint;
     [SerializeField] float bulletVelocity = 200f;
-    [SerializeField] Transform pistol;
 
     public GameObject mainCam;
     public GameObject cinaMain;
