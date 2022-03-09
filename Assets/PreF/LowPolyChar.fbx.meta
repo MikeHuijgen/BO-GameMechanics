@@ -15,6 +15,15 @@ ModelImporter:
   - first:
       74: 2933577835342229695
     second: metarig|Walk
+  - first:
+      74: 5539831331247536789
+    second: Jump
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: 2667949614841947897
+    second: Walk
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -73,11 +82,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig|Idle (0,5,10,16)
-      takeName: metarig|Idle (0,5,10,16)
+      name: Jump
+      takeName: metarig|Animation
       internalID: 0
       firstFrame: 0
-      lastFrame: 16
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -102,19 +111,19 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig|Idle (0,5,16,30)
-      takeName: metarig|Idle (0,5,16,30)
+      name: Idle
+      takeName: metarig|Animation
       internalID: 0
-      firstFrame: 0
-      lastFrame: 30
+      firstFrame: 82
+      lastFrame: 116
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -131,18 +140,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: metarig|Walk
-      takeName: metarig|Walk
+      name: Walk
+      takeName: metarig|Animation
       internalID: 0
-      firstFrame: 0
-      lastFrame: 64
+      firstFrame: 134
+      lastFrame: 204
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
