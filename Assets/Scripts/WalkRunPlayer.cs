@@ -6,18 +6,25 @@ public class WalkRunPlayer : MonoBehaviour
 {
     [Header("Movement aanpassingen")]
     [SerializeField] [Tooltip("With this you can change the players walk speed")] public float walkSpeed = 10f;
-    [SerializeField] [Tooltip("With this you can change the players run speed")] float runSpeed = 15f;
     [Header("Camera aanpassingen")]
     [SerializeField] [Tooltip("With this you can change the camera sensitivity")] float cameraSen = 700f;
+
+    private Animation animator;
+    private bool isWalking = false;
 
     float horizontal;
     float vertical;
 
+    void Start()
+    {
+        animator = GetComponent<Animation>();
+    }
+
     void Update()
     {
         Walk();
-        Run();
     }
+
 
     void Walk()
     {
@@ -28,23 +35,9 @@ public class WalkRunPlayer : MonoBehaviour
         transform.Translate(Vector3.forward * vertical * walkSpeed * Time.deltaTime);
         transform.Translate(Vector3.right * horizontal * walkSpeed * Time.deltaTime);
 
-        //Move player with camera
-        //float mouseX = Input.GetAxis("Mouse X");
-        //transform.Rotate(0, mouseX * cameraSen * Time.deltaTime, 0);
-
-    }
-
-    void Run()
-    {
-        //Move player faster while you run
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            walkSpeed = runSpeed;
-        }
-        else
-        {
-            walkSpeed = 10f;
+           // animator.SetBool("isWalking", true);
         }
     }
-
 }
