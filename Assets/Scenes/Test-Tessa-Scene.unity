@@ -529,7 +529,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 436443550ebd79f40bb1c2c3113e91b4, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -606,8 +606,16 @@ PrefabInstance:
       value: LowPolyChar
       objectReference: {fileID: 0}
     - target: {fileID: 3001548139082139161, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+      propertyPath: landDust
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001548139082139161, guid: 0afd6425d1245454e89425dde8184661, type: 3}
       propertyPath: distToGround
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001548139082139161, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+      propertyPath: jumpWalkRunDust
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3327347980729974517, guid: 0afd6425d1245454e89425dde8184661, type: 3}
       propertyPath: m_RootOrder
