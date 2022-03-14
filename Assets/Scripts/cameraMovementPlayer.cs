@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class cameraMovementPlayer : MonoBehaviour
 {
+    [Header("Camera Settings")]
     [SerializeField] float cameraSenX;
     [SerializeField] float cameraSenY;
+    [Header("Transform References")]
     [SerializeField] Transform followTransform;
     [SerializeField] Transform guns;
 
-    // Update is called once per frame
+
     void Update()
     {
         CameraRotation();
