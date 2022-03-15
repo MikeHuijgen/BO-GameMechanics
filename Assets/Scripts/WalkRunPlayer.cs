@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WalkRunPlayer : MonoBehaviour
 {
-    [Header("Movement aanpassingen")]
-    [SerializeField] [Tooltip("With this you can change the players walk speed")] public float walkSpeed = 10f;
+    [Header("Movement settings")]
+    [SerializeField] [Tooltip("You can change the walk speed with this variable")] public float walkSpeed = 10f;
 
-    private Animation animator;
+    private Animator animator;
     private bool isWalking = false;
 
     float horizontal;
@@ -15,12 +15,13 @@ public class WalkRunPlayer : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animation>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         Walk();
+
     }
 
 
@@ -33,5 +34,7 @@ public class WalkRunPlayer : MonoBehaviour
         transform.Translate(Vector3.forward * vertical * walkSpeed * Time.deltaTime);
         transform.Translate(Vector3.right * horizontal * walkSpeed * Time.deltaTime);
 
+        animator.SetBool("isWalking", true);
+        
     }
 }
