@@ -8,6 +8,7 @@ TagManager:
   - hasItem
   - Booster
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX

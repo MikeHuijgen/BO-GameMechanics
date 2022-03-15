@@ -16,6 +16,11 @@ public class Guns : MonoBehaviour
     [SerializeField] int stockAmmo = 30;
     [SerializeField] float reloadAmmoSpeed;
 
+    [Header("Gun sound")]
+    [SerializeField] AudioClip shooting;
+    [SerializeField] AudioClip reloading;
+    [SerializeField] AudioClip empty;
+
     [Header("Camera references")]
     [SerializeField] GameObject cinaMain;
     [SerializeField] GameObject cinaShoot;
@@ -26,11 +31,13 @@ public class Guns : MonoBehaviour
     private float nextTimeFire = 0f;
     private int ammoLeft;
     private int maxAmmoClip;
+    AudioSource audioSource;
 
 
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         maxAmmoClip = magAmmo;
     }
 
@@ -45,12 +52,13 @@ public class Guns : MonoBehaviour
 
     void Shoot()
     {
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeFire)
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeFire)
         {
             nextTimeFire = Time.time + 1f/fireRate;
 
             if(magAmmo > 0)
             {
+                audioSource.PlayOneShot(shooting);
                 Rigidbody clone;
                 clone = (Rigidbody)Instantiate(BulletPrefab, spawnPoint.position, BulletPrefab.rotation);
 
@@ -76,18 +84,24 @@ public class Guns : MonoBehaviour
 
     IEnumerator Reload()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && magAmmo < 7)
         {
             yield return new WaitForSeconds(reloadAmmoSpeed);
 
             if ( stockAmmo >= maxAmmoClip - magAmmo)
             {
+                audioSource.PlayOneShot(reloading);
                 ammoLeft = maxAmmoClip - magAmmo;
                 magAmmo = magAmmo + ammoLeft;
                 stockAmmo -= ammoLeft;
             }
+            else if (stockAmmo == 0)
+            {
+                audioSource.PlayOneShot(empty);
+            }
             else
             {
+                audioSource.PlayOneShot(reloading);
                 magAmmo += stockAmmo;
                 stockAmmo = 0;
             }
