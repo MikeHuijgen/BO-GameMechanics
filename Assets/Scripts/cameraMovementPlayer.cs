@@ -11,6 +11,11 @@ public class cameraMovementPlayer : MonoBehaviour
     [SerializeField] Transform followTransform;
     [SerializeField] Transform guns;
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     void Update()
     {
