@@ -9,6 +9,7 @@ TagManager:
   - Booster
   - Ground
   - Enemy
+  - bulletP
   layers:
   - Default
   - TransparentFX

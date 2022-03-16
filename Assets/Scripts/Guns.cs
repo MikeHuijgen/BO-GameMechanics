@@ -32,6 +32,7 @@ public class Guns : MonoBehaviour
     private int ammoLeft;
     private int maxAmmoClip;
     AudioSource audioSource;
+    private int addAmmo = 10;
 
 
 
@@ -65,7 +66,13 @@ public class Guns : MonoBehaviour
                 clone.velocity = spawnPoint.TransformDirection(Vector3.forward * bulletVelocity);
                 magAmmo -= 1;
             }
-        }     
+        } 
+        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            //dev key voor ammo er bij te krijgen
+            stockAmmo += addAmmo;
+        }
     }
 
     void Aim()
