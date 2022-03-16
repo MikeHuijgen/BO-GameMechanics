@@ -4,68 +4,66 @@ using UnityEngine;
 
 public class PickUpThings : MonoBehaviour
 {
-    [Header("Objecten")]
-    [SerializeField] GameObject EquipObject;
-    
-    GameObject currentObject;
-    GameObject cO;
+    public GameObject Item1;
+    public GameObject Item2;
 
-    bool hasItem;
-    
+    float distance = Vector3.Distance(Item1.transform.position, Item2.transform.position);
 
-    private void Start()
+    if(DistanceJoint2D)
+
+
+   /* public bool ItemCheck;
+    // Get our two objs
+    float distance = Vector3.Distance(Item1.transform.position, objB.transform.position);
+//get a float between these two objects which will be recorded at all times, so I would maybe use a fixed Update()
+    if(distance <= 5f && Input.GetKeyDown(KeyCode.E) && ItemCheck == false)
     {
-        
-        hasItem = false; 
-    }
-
-
-    void Update()
-    {
-        if (hasItem == true)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (currentObject != null)
-                    Drop();
-                    Pick();
-
-            }
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                if (currentObject != null)
-                    Drop();
-            }
-        }
-           
-    }
-
-    void Pick()
-    {
-        currentObject = cO;
-        currentObject.GetComponent<Rigidbody>().isKinematic = true;
-        currentObject.transform.position = EquipObject.transform.position;
-        currentObject.transform.parent = null;
-        currentObject.transform.localEulerAngles = new Vector3(0f, 180.0f, 0f);
-    }
-
-    void Drop()
-    {
-        currentObject.transform.parent = null;
-        currentObject.GetComponent<Rigidbody>().isKinematic = false;
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "hasItem")
-        {
-            hasItem = true;
-            currentObject = other.gameObject; 
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        hasItem = false; 
-    }
+            objB.SetActive(false);
+            ItemCheck = true;
+   //use sound manager
+    }*/
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//sneaky side not - Tim
