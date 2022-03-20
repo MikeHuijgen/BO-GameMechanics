@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Enemy
   - bulletP
+  - bulletAR
   layers:
   - Default
   - TransparentFX

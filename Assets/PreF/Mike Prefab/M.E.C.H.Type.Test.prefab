@@ -1752,13 +1752,14 @@ GameObject:
   - component: {fileID: 1488273171169871357}
   - component: {fileID: 919132147610486985}
   - component: {fileID: 919132147610486984}
+  - component: {fileID: 1334172038}
   m_Layer: 0
   m_Name: M.E.C.H.Type.Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6933120568519022634
 Transform:
   m_ObjectHideFlags: 0
@@ -1799,8 +1800,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 10
-  runSpeed: 15
-  cameraSen: 700
 --- !u!114 &7475374023227537324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1828,8 +1827,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.196253, y: 6.2222986, z: 5.4718404}
-  m_Center: {x: 0.60348606, y: -1.2717395, z: -0.3482778}
+  m_Size: {x: 4.6217327, y: 6.2222986, z: 3.9201255}
+  m_Center: {x: -0.026650429, y: -1.2717395, z: 0.1260581}
 --- !u!54 &919132147610486985
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1858,9 +1857,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01e1c4b411ac364693e493ab376a4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
-  isGrounded: 0
-  particalSmoke: {fileID: 0}
+  jumpSpeed: 1
+  distToGround: 1.3
+  isJumped: 0
+  landDust: {fileID: 0}
+  jumpWalkRunDust: {fileID: 0}
+--- !u!95 &1334172038
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7745264199742751376}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0ce614a506c28c408edd5299754c36d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7796222011553385893
 GameObject:
   m_ObjectHideFlags: 0
