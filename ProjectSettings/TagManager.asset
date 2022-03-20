@@ -9,11 +9,12 @@ TagManager:
   - Booster
   - Ground
   - Enemy
+  - bulletP
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Pickup
   - Water
   - UI
   - 
