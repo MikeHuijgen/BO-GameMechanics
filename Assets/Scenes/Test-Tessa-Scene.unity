@@ -123,6 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &281166778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2264304376474388432, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
+  m_PrefabInstance: {fileID: 2264304376495270535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &519003584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3001548139688185844, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+  m_PrefabInstance: {fileID: 2023155097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &852754601
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +765,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6008663105245543196, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+      propertyPath: guns
+      value: 
+      objectReference: {fileID: 519003584}
+    - target: {fileID: -6008663105245543196, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+      propertyPath: cameraSenX
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 519003585, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 281166778}
+    - target: {fileID: 519003585, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+      propertyPath: PickupRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2695067860274095183, guid: 0afd6425d1245454e89425dde8184661, type: 3}
       propertyPath: m_Name
       value: LowPolyChar
@@ -917,33 +943,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2264304376474388432, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
-      propertyPath: m_Name
-      value: Object
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264304376474388432, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264304376474388432, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 5208601065957324521, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
       propertyPath: m_Name
       value: Objecten
       objectReference: {fileID: 0}
-    - target: {fileID: 5808351359724466799, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
-      propertyPath: m_Size.x
-      value: 1
+    - target: {fileID: 8213438363556678307, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5808351359724466799, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5808351359724466799, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
-      propertyPath: m_Size.z
-      value: 1
+    - target: {fileID: 8213438363556678307, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bea85284d31893e42840d3e1a5ae5c1d, type: 3}
