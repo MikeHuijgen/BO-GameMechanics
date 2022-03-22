@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class AnimatiePlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject LowPolyChar;
+    private Animator animator;
+    private bool isJumping = false;
 
-    void Update()
-    { 
-        if (Input.GetButtonDown("2Key"))
-        {
-            LowPolyChar.GetComponent<Animator>().Play("Walk"); 
-        }
 
-        if (Input.GetButtonDown("3Key"))
-        {
-            LowPolyChar.GetComponent<Animator>().Play("Jump"); 
-        }
+    private void Start()
+    {
+        animator = GetComponent<Animator>(); 
+    }
+    private void Update()
+    {
+        animator.SetBool("isJumping", true); 
     }
 }
