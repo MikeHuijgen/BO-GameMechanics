@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Guns : MonoBehaviour
+public class SemiGun : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] Transform raycastSpawn;
     [SerializeField] Transform raycastDestination;
+    [SerializeField] TrailRenderer tracerEffect;
     [SerializeField] GameObject hitEffect;
     [SerializeField] Rigidbody rbPlayer;
+    [SerializeField] Transform hand;
 
     [Header("Gun settings")]
     [SerializeField] int damage = 1;
@@ -46,6 +48,7 @@ public class Guns : MonoBehaviour
 
     void Start()
     {
+        transform.GetComponent<SemiGun>().enabled = false;
         audioSource = GetComponent<AudioSource>();
         maxAmmoClip = magAmmo;
     }
@@ -66,12 +69,23 @@ public class Guns : MonoBehaviour
 
     }
 
+    public void ActivateGun(bool active)
+    {
+        if (active == true)
+        {
+            transform.GetComponent<SemiGun>().enabled = true;
+            AmmoText.enabled = true;
+        }
+        else
+        {
+            transform.GetComponent<SemiGun>().enabled = false;
+            AmmoText.enabled = false;
+        }
+    }
+
     void Shoot()
     {
-        ray.origin = raycastSpawn.position;
-        ray.direction = raycastDestination.position - raycastSpawn.position;
-
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeFire)
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeFire)
         {
             nextTimeFire = Time.time + 1f/fireRate;
 
@@ -81,14 +95,21 @@ public class Guns : MonoBehaviour
                 magAmmo--;
                 Instantiate(hitEffect, raycastSpawn.transform.position, Quaternion.Euler(Vector3.forward));
 
+                ray.origin = raycastSpawn.position;
+                ray.direction = raycastDestination.position - raycastSpawn.position;
 
-                if (Physics.Raycast(ray, out hitInfo, rangeShooting))
+                var tracer = Instantiate(tracerEffect,ray.origin, Quaternion.identity);
+                tracer.AddPosition(ray.origin);
+
+                if (Physics.Raycast(ray, out hitInfo))
                 {      
                     Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
                     Debug.Log(hitInfo.transform.name);
 
                     //Spawn a hitEffect when you hit something
                     Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+
+                    tracer.transform.position = hitInfo.point;
 
 
                     Enemy enemy = hitInfo.transform.GetComponent<Enemy>();

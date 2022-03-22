@@ -5,29 +5,32 @@ using TMPro;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] Transform player;
+
     [Header("Enemy settings")]
     [SerializeField] int health = 20;
 
+    [Header("Text references")]
     [SerializeField] TMP_Text enemyHealth;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         death();
+        LookAtPlayer();
         enemyHealth.text = $"EnemyHealth/{ health }";
     }
 
     public void TakeDamage(int bulletdamage)
     {
         health -= bulletdamage;
+    }
+
+    void LookAtPlayer()
+    {
+        transform.LookAt(player);
     }
 
     void death()

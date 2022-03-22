@@ -20,7 +20,11 @@ public class CrossAir : MonoBehaviour
     {
         ray.origin = mainCamera.position;
         ray.direction = mainCamera.forward;
-        Physics.Raycast(ray, out hitInfo);
-        transform.position = hitInfo.point;
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            transform.position = hitInfo.point;
+        }
+ 
     }
 }
