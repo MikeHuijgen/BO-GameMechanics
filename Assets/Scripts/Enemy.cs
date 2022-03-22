@@ -1,35 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] Transform player;
+
     [Header("Enemy settings")]
-    [SerializeField] int enemyHealth = 20;
+    [SerializeField] int health = 20;
 
+    [Header("Text references")]
+    [SerializeField] TMP_Text enemyHealth;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        death();
+        LookAtPlayer();
+        enemyHealth.text = $"EnemyHealth/{ health }";
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void TakeDamage(int bulletdamage)
     {
-        if (other.gameObject.tag == "bulletP")
-        {
-            enemyHealth--;
+        health -= bulletdamage;
+    }
 
-            if(enemyHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
+    void LookAtPlayer()
+    {
+        transform.LookAt(player);
+    }
+
+    void death()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            health = 0;
         }
     }
+
 }

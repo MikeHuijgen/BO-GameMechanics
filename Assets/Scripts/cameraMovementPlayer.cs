@@ -14,8 +14,14 @@ public class cameraMovementPlayer : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+<<<<<<< HEAD
         Cursor.visible = false; 
     }
+=======
+        Cursor.visible = false;
+    }
+
+>>>>>>> origin
     void Update()
     {
         CameraRotation();
@@ -76,6 +82,8 @@ public class cameraMovementPlayer : MonoBehaviour
         }
 
         guns.transform.localEulerAngles = angles;
+
+        guns.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
 
     }
 }
