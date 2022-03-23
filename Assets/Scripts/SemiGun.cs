@@ -75,7 +75,6 @@ public class SemiGun : MonoBehaviour
         {
             transform.GetComponent<SemiGun>().enabled = true;
             AmmoText.enabled = true;
-            transform.position = hand.transform.position;
         }
         else
         {
