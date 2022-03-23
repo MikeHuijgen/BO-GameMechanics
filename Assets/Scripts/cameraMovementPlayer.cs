@@ -14,14 +14,9 @@ public class cameraMovementPlayer : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-<<<<<<< HEAD
-        Cursor.visible = false; 
-    }
-=======
         Cursor.visible = false;
     }
 
->>>>>>> origin
     void Update()
     {
         CameraRotation();

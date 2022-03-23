@@ -10,15 +10,12 @@ TagManager:
   - Ground
   - Enemy
   - bulletP
-<<<<<<< HEAD
-=======
   - bulletAR
->>>>>>> origin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Pickup
+  - 
   - Water
   - UI
   - 
