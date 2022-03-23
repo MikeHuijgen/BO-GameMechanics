@@ -21,6 +21,9 @@ public class PickUpMike : MonoBehaviour
 
     private float throwForceZ = 15f;
     private float throwForceY = 5f;
+    private float throwRotateForceY = 5f;
+    private float throwRotateForceZ = 20f;
+    private float throwRotateForceX = 10f;
 
     void Start()
     {
@@ -85,9 +88,9 @@ public class PickUpMike : MonoBehaviour
             handRaySpawn.transform.DetachChildren();
             isPickedUp = false;
             pickUpRB.AddRelativeForce(0,throwForceY,throwForceZ, ForceMode.Impulse);
+            pickUpRB.AddTorque(throwRotateForceX,throwRotateForceY, throwRotateForceZ, ForceMode.Impulse);
             
             Debug.Log("je hebt het neer gegooid");
-            
         }
     }
 
