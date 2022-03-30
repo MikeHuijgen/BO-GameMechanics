@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class AnimatiePlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject LowPolyChar;
+    private Animator animator; 
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     void Update()
-    { 
-        if (Input.GetButtonDown("2Key"))
-        {
-            LowPolyChar.GetComponent<Animator>().Play("Walk"); 
-        }
+    {
+        AnimationPickUp();
+    }
 
-        if (Input.GetButtonDown("3Key"))
+    void AnimationPickUp()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            LowPolyChar.GetComponent<Animator>().Play("Jump"); 
-        }
+            animator.CrossFade("PickUp", 0.5f);
+        }        
     }
 }
