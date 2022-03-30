@@ -8,8 +8,6 @@ public class WalkRunPlayer : MonoBehaviour
     [SerializeField] [Tooltip("You can change the walk speed with this variable")] public float walkSpeed = 10f;
 
     private Animator animator;
-    private bool isWalking = false;
-
     float horizontal;
     float vertical;
 
@@ -21,7 +19,6 @@ public class WalkRunPlayer : MonoBehaviour
     void Update()
     {
         Walk();
-
     }
 
 
@@ -34,7 +31,6 @@ public class WalkRunPlayer : MonoBehaviour
         transform.Translate(Vector3.forward * vertical * walkSpeed * Time.deltaTime);
         transform.Translate(Vector3.right * horizontal * walkSpeed * Time.deltaTime);
 
-        animator.SetBool("isWalking", true);
-        
+        animator.CrossFade("Walk", 0.5f);   
     }
 }

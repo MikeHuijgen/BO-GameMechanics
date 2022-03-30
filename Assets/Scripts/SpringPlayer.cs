@@ -12,10 +12,6 @@ public class SpringPlayer : MonoBehaviour
     [Header("All BOOLS")]
     public bool isJumped; 
 
-    [Header("smokeJump")]
-    [SerializeField] ParticleSystem landDust;
-    [SerializeField] ParticleSystem jumpWalkRunDust;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,11 +26,9 @@ public class SpringPlayer : MonoBehaviour
             {
                 isJumped = false;
                 rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
-                JumpDust();
             }
         }
     }
-
     private void CheckGround()
     {
         RaycastHit hit;
@@ -57,39 +51,4 @@ public class SpringPlayer : MonoBehaviour
             }
         }
     }
-
-    void LandDust()
-    {
-        landDust.Play();
-    }
-
-    void JumpDust()
-    {
-        jumpWalkRunDust.Play();
-    }
 }
-
-/*void FixedUpdate()
-   {
-       RaycastHit hit;
-
-       isGrounded = true;
-       Debug.Log(isGrounded);
-
-       if (Physics.Raycast(transform.position, -transform.up, out hit, 2)) 
-       {
-           if (Input.GetKey(KeyCode.Space) && isGrounded)
-           {
-               isGrounded = true;
-               rb.AddForce(Vector3.up * jumpForce);              
-               jumpSmoke();
-           }
-       }
-       else
-       {
-           landSmoke();
-           isGrounded = false;
-           Debug.Log(isGrounded);
-
-       }        
-   }*/

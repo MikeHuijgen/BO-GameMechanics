@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimatiePlayer : MonoBehaviour
 {
-    private Animator animator; 
+    private Animator animator;
 
     void Start()
     {
@@ -13,6 +13,7 @@ public class AnimatiePlayer : MonoBehaviour
     void Update()
     {
         AnimationPickUp();
+        AnimationJump();
     }
 
     void AnimationPickUp()
@@ -20,6 +21,14 @@ public class AnimatiePlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             animator.CrossFade("PickUp", 0.5f);
-        }        
+        }
+    }
+
+    void AnimationJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.CrossFade("Jump", 0.5f);
+        }
     }
 }
