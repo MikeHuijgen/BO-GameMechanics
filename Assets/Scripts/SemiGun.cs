@@ -12,6 +12,7 @@ public class SemiGun : MonoBehaviour
     [SerializeField] GameObject hitEffect;
     [SerializeField] Rigidbody rbPlayer;
     [SerializeField] Transform hand;
+    [SerializeField] Animator animator;
 
     [Header("Gun settings")]
     [SerializeField] int damage = 1;
@@ -42,6 +43,8 @@ public class SemiGun : MonoBehaviour
     AudioSource audioSource;
 
 
+
+
     RaycastHit hitInfo;
     Ray ray;
 
@@ -52,6 +55,8 @@ public class SemiGun : MonoBehaviour
         transform.GetComponent<SemiGun>().enabled = false;
         audioSource = GetComponent<AudioSource>();
         maxAmmoClip = magAmmo;
+
+        animator = animator.GetComponent<Animator>();
     }
 
     void Update()
@@ -89,9 +94,10 @@ public class SemiGun : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeFire)
         {
+            animator.SetBool("Aim", true);
             nextTimeFire = Time.time + 1f/fireRate;
 
-            if(magAmmo > 0)
+            if (magAmmo > 0)
             { 
                 audioSource.PlayOneShot(shooting);
                 magAmmo--;
@@ -102,6 +108,7 @@ public class SemiGun : MonoBehaviour
 
                 var tracer = Instantiate(tracerEffect,ray.origin, Quaternion.identity);
                 tracer.AddPosition(ray.origin);
+
 
                 if (Physics.Raycast(ray, out hitInfo))
                 {      
@@ -125,6 +132,10 @@ public class SemiGun : MonoBehaviour
             }
 
         } 
+        else
+        {
+            animator.SetBool("Aim", false);
+        }
        
     }
 
@@ -134,11 +145,13 @@ public class SemiGun : MonoBehaviour
         {
             cinaShoot.SetActive(true);
             cinaMain.SetActive(false);
+            animator.SetBool("Aim",true);
         }
         else
         {
             cinaMain.SetActive(true);
             cinaShoot.SetActive(false);
+            animator.SetBool("Aim", false);
         }
     }
 
@@ -146,7 +159,9 @@ public class SemiGun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && magAmmo < maxAmmoClip)
         {
+            animator.SetBool("Reload", true);
             yield return new WaitForSeconds(reloadAmmoSpeed);
+           
 
             if ( stockAmmo >= maxAmmoClip - magAmmo)
             {
@@ -165,6 +180,10 @@ public class SemiGun : MonoBehaviour
                 magAmmo += stockAmmo;
                 stockAmmo = 0;
             }
+        }
+        else
+        {
+            animator.SetBool("Reload", false);
         }
     }
 

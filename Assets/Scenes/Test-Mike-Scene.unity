@@ -1495,6 +1495,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314751105}
   m_CullTransparentMesh: 1
+--- !u!95 &1351162791 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 919132149608672965, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+  m_PrefabInstance: {fileID: 1579123162181933958}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1410539005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7571976256006511018, guid: 0afd6425d1245454e89425dde8184661, type: 3}
@@ -2255,6 +2260,10 @@ PrefabInstance:
       propertyPath: AmmoText
       value: 
       objectReference: {fileID: 1208203754}
+    - target: {fileID: 5465131067851829026, guid: bea3e3362cd09e24d961d1ae413ff9db, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1351162791}
     - target: {fileID: 5465131067851829026, guid: bea3e3362cd09e24d961d1ae413ff9db, type: 3}
       propertyPath: cinaMain
       value: 
