@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PickUpMike : MonoBehaviour
 {
     [SerializeField] LayerMask pickUp;
     [SerializeField] Transform handRaySpawn;
     [SerializeField] Transform rayDestination;
-    [SerializeField] Transform normaleParent;
+    [SerializeField] TMP_Text pickUpText;
 
 
     Ray ray;
@@ -42,15 +43,22 @@ public class PickUpMike : MonoBehaviour
         if (Physics.Raycast(ray, out hitInfo, 100f, pickUp))
         {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
+            pickUpText.enabled = true;
             myPickUp = hitInfo.transform;
             PickUp();
+        }
+        else
+        {
+            pickUpText.enabled = false;
         }
     }
 
     void PickUp()
     {
         if (Input.GetKeyDown(KeyCode.E) && isPickedUp == false)
-        { 
+        {
+            pickUpText.enabled = false;
+
             //set the semiGun script on if you pick up de gun
             SemiGun semiGun = myPickUp.transform.GetComponent<SemiGun>();
             semiGun.ActivateGun(true);
@@ -85,6 +93,7 @@ public class PickUpMike : MonoBehaviour
             handRaySpawn.transform.DetachChildren();
             isPickedUp = false;
             pickUpRB.AddRelativeForce(0,throwForceY,throwForceZ, ForceMode.Impulse);
+            pickUpRB.AddTorque(0, throwForceY, throwForceZ);
             
             Debug.Log("je hebt het neer gegooid");
             

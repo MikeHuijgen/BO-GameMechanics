@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 919132149608672965}
   m_Layer: 0
   m_Name: LowPolyChar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10646,7 +10646,7 @@ MonoBehaviour:
     m_Bits: 1024
   handRaySpawn: {fileID: 4397264103754790765}
   rayDestination: {fileID: 7571976256006511018}
-  normaleParent: {fileID: 0}
+  pickUpText: {fileID: 0}
   isPickedUp: 0
 --- !u!1 &3504361551507495836
 GameObject:
