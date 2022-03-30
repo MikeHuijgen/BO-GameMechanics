@@ -17,7 +17,7 @@ public class SemiGun : MonoBehaviour
     [SerializeField] int damage = 1;
     [SerializeField] float fireRate = 10f;
     [SerializeField] int magAmmo = 7;
-    [SerializeField] int stockAmmo = 30;
+    [SerializeField] public int stockAmmo = 30;
     [SerializeField] float rangeShooting = 100f;
     [SerializeField] float reloadAmmoSpeed;
 
@@ -32,6 +32,7 @@ public class SemiGun : MonoBehaviour
 
     [Header("Text references")]
     [SerializeField] TMP_Text AmmoText;
+    [SerializeField] TMP_Text reloadText;
 
     private float nextTimeFire = 0f;
     private int ammoLeft;
@@ -58,7 +59,7 @@ public class SemiGun : MonoBehaviour
         Shoot();
         Aim();
         StartCoroutine(Reload());
-        AmmoCountScreen();
+        gunUI();
 
         //dev keys voor allemaal dingen verwijderen voor het inleveren
         if (Input.GetKeyDown(KeyCode.M))
@@ -80,6 +81,7 @@ public class SemiGun : MonoBehaviour
         {
             transform.GetComponent<SemiGun>().enabled = false;
             AmmoText.enabled = false;
+            reloadText.enabled = false;
         }
     }
 
@@ -104,13 +106,11 @@ public class SemiGun : MonoBehaviour
                 if (Physics.Raycast(ray, out hitInfo))
                 {      
                     Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
-                    Debug.Log(hitInfo.transform.name);
 
                     //Spawn a hitEffect when you hit something
                     Instantiate(hitEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
 
                     tracer.transform.position = hitInfo.point;
-
 
                     Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
                     if (enemy != null)
@@ -164,14 +164,28 @@ public class SemiGun : MonoBehaviour
                 audioSource.PlayOneShot(reloading);
                 magAmmo += stockAmmo;
                 stockAmmo = 0;
- 
             }
         }
     }
 
-    void AmmoCountScreen()
+    void gunUI()
     {
         AmmoText.text = $"{magAmmo}/{stockAmmo}";
+        
+        if(magAmmo <= 3 && stockAmmo > 0)
+        {
+            reloadText.enabled = true;
+        }
+        else
+        {
+            reloadText.enabled = false;
+        }
+
+    }
+
+    public void AddAmmo(int ammoAdd)
+    {
+        stockAmmo += ammoAdd;
     }
 
 }
