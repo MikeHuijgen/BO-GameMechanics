@@ -10,11 +10,14 @@ public class SpringPlayer : MonoBehaviour
     Rigidbody rb;
 
     [Header("All BOOLS")]
-    public bool isJumped; 
+    public bool isJumped;
+
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -24,8 +27,9 @@ public class SpringPlayer : MonoBehaviour
         {
             if (isJumped)
             {
+                AnimationJump();
                 isJumped = false;
-                rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
+                rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);              
             }
         }
     }
@@ -47,8 +51,12 @@ public class SpringPlayer : MonoBehaviour
             {
                 isJumped = true;
                 Debug.Log(isJumped);
-                
             }
         }
+    }
+
+    void AnimationJump()
+    {
+        animator.CrossFade("Jump", 0.5f);
     }
 }

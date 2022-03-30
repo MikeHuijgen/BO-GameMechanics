@@ -19,6 +19,7 @@ public class WalkRunPlayer : MonoBehaviour
     void Update()
     {
         Walk();
+        
     }
 
 
@@ -31,6 +32,14 @@ public class WalkRunPlayer : MonoBehaviour
         transform.Translate(Vector3.forward * vertical * walkSpeed * Time.deltaTime);
         transform.Translate(Vector3.right * horizontal * walkSpeed * Time.deltaTime);
 
-        animator.CrossFade("Walk", 0.5f);   
+        WalkAnimation();
+    }
+
+    void WalkAnimation()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            animator.SetFloat("Walk", 0.2f);
+        }
     }
 }
