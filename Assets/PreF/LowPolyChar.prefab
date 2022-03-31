@@ -665,8 +665,6 @@ MonoBehaviour:
   jumpSpeed: 3
   distToGround: 0.75
   isJumped: 0
-  landDust: {fileID: 0}
-  jumpWalkRunDust: {fileID: 0}
 --- !u!114 &3001548139082139160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11598,7 +11596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1869227346445880809, guid: 4316e63d8e3be7d41bc330e37ed5c20d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.618811
+      value: -12.618808
       objectReference: {fileID: 0}
     - target: {fileID: 1869227346445880809, guid: 4316e63d8e3be7d41bc330e37ed5c20d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11762,7 +11760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7814644620384347722, guid: 4316e63d8e3be7d41bc330e37ed5c20d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.618811
+      value: -12.618808
       objectReference: {fileID: 0}
     - target: {fileID: 7814644620384347722, guid: 4316e63d8e3be7d41bc330e37ed5c20d, type: 3}
       propertyPath: m_LocalRotation.x
