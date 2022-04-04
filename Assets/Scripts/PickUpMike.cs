@@ -40,7 +40,7 @@ public class PickUpMike : MonoBehaviour
         ray.origin = handRaySpawn.position;
         ray.direction = rayDestination.position - handRaySpawn.position;
 
-        if (Physics.Raycast(ray, out hitInfo, 100f, pickUp))
+        if (Physics.Raycast(ray, out hitInfo, 10f, pickUp))
         {
             Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
             pickUpText.enabled = true;

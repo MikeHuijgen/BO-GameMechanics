@@ -19,7 +19,6 @@ public class SemiGun : MonoBehaviour
     [SerializeField] float fireRate = 10f;
     [SerializeField] int magAmmo = 7;
     [SerializeField] public int stockAmmo = 30;
-    [SerializeField] float rangeShooting = 100f;
     [SerializeField] float reloadAmmoSpeed;
 
     [Header("Gun sound")]
