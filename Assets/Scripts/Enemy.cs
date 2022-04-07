@@ -3,29 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class Enemy : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] Transform player;
 
     [Header("Enemy settings")]
-    [SerializeField] int health = 20;
+    [SerializeField] int maxHealth = 20;
+    [SerializeField] int currentHealth;
 
-    [Header("Text references")]
-    [SerializeField] TMP_Text enemyHealth;
+    [Header("UI references")]
+    [SerializeField] HealthBar healthBar;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
 
 
-    // Update is called once per frame
     void Update()
     {
         death();
         LookAtPlayer();
-        enemyHealth.text = $"EnemyHealth/{ health }";
     }
 
     public void TakeDamage(int bulletdamage)
     {
-        health -= bulletdamage;
+        currentHealth -= bulletdamage;
+        healthBar.SetHealth(currentHealth);
     }
 
     void LookAtPlayer()
@@ -35,10 +42,10 @@ public class Enemy : MonoBehaviour
 
     void death()
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
-            health = 0;
+            currentHealth = 0;
         }
     }
 

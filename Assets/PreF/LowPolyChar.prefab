@@ -10592,7 +10592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3489891145665459959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.78, y: 8.23, z: 2.43}
+  m_LocalPosition: {x: 0.47, y: 10.07, z: 3.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3327347980729974517}
@@ -10616,6 +10616,7 @@ MonoBehaviour:
   handRaySpawn: {fileID: 4397264103754790765}
   rayDestination: {fileID: 7571976256006511018}
   pickUpText: {fileID: 0}
+  animator: {fileID: 919132149608672965}
   isPickedUp: 0
 --- !u!1 &3504361551507495836
 GameObject:

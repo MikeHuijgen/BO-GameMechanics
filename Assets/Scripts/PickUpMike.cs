@@ -9,6 +9,7 @@ public class PickUpMike : MonoBehaviour
     [SerializeField] Transform handRaySpawn;
     [SerializeField] Transform rayDestination;
     [SerializeField] TMP_Text pickUpText;
+    [SerializeField] Animator animator;
 
 
     Ray ray;
@@ -19,6 +20,7 @@ public class PickUpMike : MonoBehaviour
     Transform myPickUp;
     Rigidbody pickUpRB;
     BoxCollider pickUpCollider;
+    
 
     private float throwForceZ = 15f;
     private float throwForceY = 5f;
@@ -26,6 +28,8 @@ public class PickUpMike : MonoBehaviour
     void Start()
     {
         isPickedUp = false;
+
+        animator = animator.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,6 +37,7 @@ public class PickUpMike : MonoBehaviour
     {
         CheckPickUp();
         Drop();
+        animate();
     }
 
     void CheckPickUp()
@@ -96,7 +101,18 @@ public class PickUpMike : MonoBehaviour
             pickUpRB.AddTorque(0, throwForceY, throwForceZ);
             
             Debug.Log("je hebt het neer gegooid");
-            
+        }
+    }
+
+    void animate ()
+    {
+        if (isPickedUp == true)
+        {
+            animator.SetBool("Aim", true);
+        }
+        else if (isPickedUp == false)
+        {
+            animator.SetBool("Aim", false);
         }
     }
 
