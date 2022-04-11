@@ -128,6 +128,7 @@ public class SemiGun : MonoBehaviour
             else if(magAmmo <= 0 && stockAmmo <= 0)
             {
                 audioSource.PlayOneShot(empty);
+                
             }
 
         } 

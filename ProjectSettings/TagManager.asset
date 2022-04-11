@@ -11,6 +11,9 @@ TagManager:
   - Enemy
   - bulletP
   - bulletAR
+  - ShootVolume
+  - MusicVolume
+  - AudioLoop
   layers:
   - Default
   - TransparentFX
