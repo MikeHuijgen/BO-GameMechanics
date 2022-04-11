@@ -74,8 +74,7 @@ public class PickUpMike : MonoBehaviour
             //set the rigidbody and the collider on the item you picked up on false
             pickUpRB.useGravity = false;
             pickUpCollider.enabled = false;
-            
-            
+
             isPickedUp = true;
         }
     }
