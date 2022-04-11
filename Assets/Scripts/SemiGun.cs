@@ -93,7 +93,6 @@ public class SemiGun : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeFire)
         {
-            animator.SetBool("Aim", true);
             nextTimeFire = Time.time + 1f/fireRate;
 
             if (magAmmo > 0)
@@ -131,10 +130,6 @@ public class SemiGun : MonoBehaviour
             }
 
         } 
-        else
-        {
-            animator.SetBool("Aim", false);
-        }
        
     }
 

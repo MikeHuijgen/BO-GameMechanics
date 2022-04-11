@@ -37,7 +37,7 @@ public class PickUpMike : MonoBehaviour
     {
         CheckPickUp();
         Drop();
-        animate();
+        PickUpPosition();
     }
 
     void CheckPickUp()
@@ -74,12 +74,19 @@ public class PickUpMike : MonoBehaviour
             //set the rigidbody and the collider on the item you picked up on false
             pickUpRB.useGravity = false;
             pickUpCollider.enabled = false;
-
-            myPickUp.transform.parent = handRaySpawn.transform;
-            myPickUp.rotation = handRaySpawn.rotation;
-            myPickUp.position = handRaySpawn.position;
-
+            
+            
             isPickedUp = true;
+        }
+    }
+
+    void PickUpPosition()
+    {
+        if (isPickedUp == true)
+        {
+            myPickUp.transform.parent = handRaySpawn.transform;
+            myPickUp.transform.position = handRaySpawn.transform.position;
+            myPickUp.transform.rotation = handRaySpawn.transform.rotation;
         }
     }
 
@@ -101,18 +108,6 @@ public class PickUpMike : MonoBehaviour
             pickUpRB.AddTorque(0, throwForceY, throwForceZ);
             
             Debug.Log("je hebt het neer gegooid");
-        }
-    }
-
-    void animate ()
-    {
-        if (isPickedUp == true)
-        {
-            animator.SetBool("Aim", true);
-        }
-        else if (isPickedUp == false)
-        {
-            animator.SetBool("Aim", false);
         }
     }
 
