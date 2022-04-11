@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit(); // Dit zorgt ervoor dat je de game helemaal afsluit als je de game hebt gebuild. 
+        Debug.Log("Quit the game");
     }
 }
 

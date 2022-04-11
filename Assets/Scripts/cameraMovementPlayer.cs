@@ -10,17 +10,20 @@ public class cameraMovementPlayer : MonoBehaviour
     [Header("Transform References")]
     [SerializeField] Transform followTransform;
     [SerializeField] Transform guns;
+    public bool cursorVisible;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        cursorVisible = false;
     }
 
     void Update()
     {
         CameraRotation();
         GunRotation();
+       
     }
 
     void CameraRotation()
