@@ -16,4 +16,4 @@
 - [Link naar Trello](https://trello.com/b/71eEBhlI/bo-arcade-mechanics)
 
 ## Link naar PDF.
-- [Link naar Notulen]()
+- [Link naar Notulen](https://github.com/MikeHuijgen/BO-GameMechanics/blob/main/PDF/Retrospective_Periode_3.pdf)
