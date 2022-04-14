@@ -29,12 +29,12 @@ public class cameraMovementPlayer : MonoBehaviour
     void CameraRotation()
     {
         //Get input
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = -Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime;
+        float mouseY = -Input.GetAxis("Mouse Y") * Time.deltaTime;
 
         //Rotate the follow transform based on input
-        followTransform.transform.rotation *= Quaternion.AngleAxis(mouseX * cameraSenX * Time.deltaTime, Vector3.up);
-        followTransform.transform.rotation *= Quaternion.AngleAxis(mouseY * cameraSenY * Time.deltaTime, Vector3.right);
+        followTransform.transform.rotation *= Quaternion.AngleAxis(mouseX * cameraSenX, Vector3.up);
+        followTransform.transform.rotation *= Quaternion.AngleAxis(mouseY * cameraSenY, Vector3.right);
 
         //Clamping looking Up/Down 
         var angles = followTransform.transform.localEulerAngles;

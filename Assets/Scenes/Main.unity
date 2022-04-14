@@ -1557,6 +1557,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6008663105245543196, guid: 0afd6425d1245454e89425dde8184661, type: 3}
+      propertyPath: cameraSenX
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2695067860274095183, guid: 0afd6425d1245454e89425dde8184661, type: 3}
       propertyPath: m_Name
       value: LowPolyChar
