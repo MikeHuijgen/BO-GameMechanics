@@ -29,7 +29,7 @@ public class SpringPlayer : MonoBehaviour
             if (isJumped)
             {
                 isJumped = false;
-                rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
+                rb.AddForce(0, jumpSpeed, 0, ForceMode.Impulse); 
                 JumpDust();
             }
         }
