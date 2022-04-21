@@ -13,6 +13,9 @@
 - [Link naar Video Blender Mike](https://youtu.be/-7YR1MXgB7g)
 - [Link naar Video Unity Mike](https://youtu.be/R782pc-Q2sQ)
 
+- [Link naar Video Blender Tessa](https://youtu.be/79zP_USaqFE)
+- [Link naar Video Unity Tessa](https://youtu.be/94z3jarHyIc)
+
 ## Link naar Trello.
 - [Link naar Trello](https://trello.com/b/71eEBhlI/bo-arcade-mechanics)
 
