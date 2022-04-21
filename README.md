@@ -10,7 +10,8 @@
 ### Wij hebben de mechanics : lopen, springen, schieten, oppakken en de UI gemaakt.
  
 ## Link naar mechanic video.
-- [Link naar Video]()
+- [Link naar Video Blender Mike](https://youtu.be/-7YR1MXgB7g)
+- [Link naar Video Unity Mike](https://youtu.be/R782pc-Q2sQ)
 
 ## Link naar Trello.
 - [Link naar Trello](https://trello.com/b/71eEBhlI/bo-arcade-mechanics)
